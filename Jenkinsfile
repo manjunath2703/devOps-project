@@ -2,7 +2,7 @@ pipeline {
 agent any
 
 environment {
-    DOCKER_IMAGE = "manjunath2703/devops-app"
+    DOCKER_IMAGE = "manjunathbm2003/devops-app"
 }
 
 stages {
@@ -10,12 +10,6 @@ stages {
     stage('Build Docker Image') {
         steps {
             sh 'docker build -t $DOCKER_IMAGE .'
-        }
-    }
-
-    stage('Docker Login') {
-        steps {
-            sh 'echo "YOUR_DOCKER_PASSWORD" | docker login -u manjunath2703 --password-stdin'
         }
     }
 
