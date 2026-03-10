@@ -15,7 +15,7 @@ stages {
 
     stage('Docker Login') {
         steps {
-            sh 'echo YOUR_DOCKER_PASSWORD | docker login -u manjunathbm2003 --password-stdin'
+            sh 'echo YOUR_REAL_PASSWORD | docker login -u manjunathbm2003 --password-stdin'
         }
     }
 
