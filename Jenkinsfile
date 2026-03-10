@@ -15,7 +15,7 @@ stages {
 
     stage('Docker Login') {
         steps {
-            sh 'echo YOUR_DOCKER_PASSWORD | docker login -u manjunathbm2003 --password-stdin'
+            sh 'echo DOCKER_TOKEN | docker login -u manjunathbm2003 --password-stdin'
         }
     }
 
@@ -30,7 +30,7 @@ stages {
             sh 'ansible-playbook playbook.yml'
         }
     }
-
 }
+
 
 }
