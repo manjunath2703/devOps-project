@@ -1,40 +1,37 @@
 pipeline {
-agent any
+    agent any
 
-stages {
+    stages {
 
-stage('Clone Repository') {
-steps {
-git branch: 'main', url: 'https://github.com/manjunath2703/DevOps-project.git'
-}
-}
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/manjunath2703/DevOps-project.git'
+            }
+        }
 
-stage('Build Docker Image') {
-steps {
-sh 'docker build -t Devops-app .'
-}
-}
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t manjunath2703/devops-app .'
+            }
+        }
 
-stage('Docker Login') {
-steps {
-withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-sh 'echo $PASS | docker login -u $USER --password-stdin'
-}
-}
-}
+        stage('Docker Login') {
+            steps {
+                sh 'docker login -u manjunath2703 -p YOUR_PASSWORD'
+            }
+        }
 
-stage('Push Docker Image') {
-steps {
-sh 'docker tag Devops-app manjunathbm2003/Devops-app:latest'
-sh 'docker push manjunathbm2003/Devops-app:latest'
-}
-}
+        stage('Push Docker Image') {
+            steps {
+                sh 'docker push manjunath2703/devops-app'
+            }
+        }
 
-stage('Deploy using Ansible') {
-steps {
-sh 'ansible-playbook -i inventory playbook.yml'
-}
-}
+        stage('Deploy using Ansible') {
+            steps {
+                sh 'ansible-playbook playbook.yml'
+            }
+        }
 
-}
+    }
 }
