@@ -1,8 +1,10 @@
 pipeline {
 agent any
 
+
 environment {
     DOCKER_IMAGE = "manjunathbm2003/devops-app"
+    DOCKER_USER  = "manjunathbm2003"
 }
 
 stages {
@@ -15,7 +17,7 @@ stages {
 
     stage('Docker Login') {
         steps {
-            sh 'echo dckr_pat_xxxxxxxxxxxxx | docker login -u manjunathbm2003 --password-stdin'
+            sh 'echo YOUR_NEW_DOCKER_TOKEN | docker login -u $DOCKER_USER --password-stdin'
         }
     }
 
@@ -32,5 +34,6 @@ stages {
     }
 
 }
+
 
 }
