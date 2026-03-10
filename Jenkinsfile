@@ -1,6 +1,7 @@
 pipeline {
 agent any
 
+```
 environment {
     DOCKER_IMAGE = "manjunathbm2003/devops-app"
 }
@@ -15,7 +16,7 @@ stages {
 
     stage('Docker Login') {
         steps {
-            sh 'echo DOCKER_TOKEN | docker login -u manjunathbm2003 --password-stdin'
+            sh 'echo dckr_pat_xxxxxxxxxxxxx | docker login -u manjunathbm2003 --password-stdin'
         }
     }
 
@@ -30,7 +31,8 @@ stages {
             sh 'ansible-playbook playbook.yml'
         }
     }
-}
 
+}
+```
 
 }
